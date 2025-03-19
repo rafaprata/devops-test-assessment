@@ -5,8 +5,8 @@ app = FastAPI()
 
 @app.get("/api/hello")
 async def read_hello():
-    return "Hello!"
+    return {"message": "Hello!"}
 
 @app.get("/api/thanks")
 async def thanks():
-    return message
+    return {"message": message}
