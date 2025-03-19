@@ -13,11 +13,6 @@ AWS_SECRET_ACCESS_KEY = ${aws_user_secret}
 aws eks update-kubeconfig --name ${cluster_name} --region ${aws_region}
 ```
 
-## SSH Command to Bastion
-```
-ssh -i ${path}/../ssh_keys/id_rsa ec2-user@${bastion_public_ip}
-```
-
 ## ECR Repository URL
 
 ```
