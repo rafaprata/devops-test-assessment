@@ -1,0 +1,4 @@
+**/.terraform*
+**/__py*
+**/.venv*
+**/id_rsa*
