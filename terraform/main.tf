@@ -184,7 +184,34 @@ resource "aws_iam_policy" "eks_user" {
         Effect   = "Allow",
         Action   = "eks:DescribeCluster",
         Resource = module.eks.cluster_arn
+      },
+      {
+         Sid = "GetAuthorizationToken",
+         Effect = "Allow",
+         Action = [
+            "ecr:GetAuthorizationToken"
+         ],
+         Resource = "*"
+      },
+      {
+         Sid = "ManageRepositoryContents",
+         Effect = "Allow",
+         Action = [
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:GetRepositoryPolicy",
+                "ecr:DescribeRepositories",
+                "ecr:ListImages",
+                "ecr:DescribeImages",
+                "ecr:BatchGetImage",
+                "ecr:InitiateLayerUpload",
+                "ecr:UploadLayerPart",
+                "ecr:CompleteLayerUpload",
+                "ecr:PutImage"
+         ],
+         Resource = aws_ecr_repository.ecr.arn
       }
+ 
     ]
   })
 }

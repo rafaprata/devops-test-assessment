@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: hello-api
-          image: ECR_IMAGE_REPOSITORY:ECR_IMAGE_TAG
+          image: DOCKER_IMAGE
           tty: true
           imagePullPolicy: Always
           resources:
