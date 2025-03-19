@@ -213,7 +213,7 @@ module "ec2_instance" {
 
   associate_public_ip_address = true
 
-  user_data = templatefile("${path.module}/user_data/user_data.tftpl", {
+  user_data = templatefile("${path.module}/templates/user_data.tftpl", {
     k8s_version         = local.k8s_version
     aws_region          = data.aws_region.current.name
     aws_user_access_key = aws_iam_access_key.automated_user.id
