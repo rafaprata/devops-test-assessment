@@ -40,3 +40,7 @@ The API should return `Hello!` upon being called at `/api/hello`
 curl -sv localhost:8000/api/hello 
 
 ```
+
+## Result
+
+You can check de result, here: http://k8s-default-ingressh-a140dfd61f-904384313.us-east-1.elb.amazonaws.com/api/hello
