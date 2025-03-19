@@ -1,4 +1,6 @@
 **/.terraform*
+*/*.tfstate*
 **/__py*
 **/.venv*
 **/id_rsa*
+outputs*
