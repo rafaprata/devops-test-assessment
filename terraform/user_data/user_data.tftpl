@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Reinstalling AWS CLI
+yum remove awscli -y
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
+unzip /tmp/awscliv2.zip -d /tmp
+/tmp/aws/install
+
+# Installing kubectl
+curl -L -o /tmp/kubectl https://dl.k8s.io/release/${k8s_version}.0/bin/linux/amd64/kubectl
+install -o root -g root -m 0755 /tmp/kubectl /usr/bin/kubectl
+
+# Installing Helm
+curl -fsSL -o /tmp/get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 /tmp/get_helm.sh
+/tmp/get_helm.sh
+
+# Defining AWS Config file
+mkdir /home/ec2-user/.aws
+echo << EOF > /home/ec2-user/.aws/config
+[default]
+region = ${aws_region}
+output = json
+EOF
+
+echo << EOF > /home/ec2-user/.aws/credentials
+[default]
+aws_access_key_id = ${aws_user_access_key}
+aws_secret_access_key = ${aws_user_secret_key}
+EOF
+
+chown -R ec2-user:ec2-user /home/ec2-user/.aws
